@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
+from .models import UserPreference
 
 User = get_user_model()
 
@@ -30,3 +31,14 @@ class ProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
     fields = ['username', 'email']
+
+class UserPreferenceSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = UserPreference
+    fields = [
+      "dietary_preference",
+      "budget_min",
+      "budget_max",
+      "favourite_cuisines",
+      "max_distance"
+    ]
